@@ -115,3 +115,43 @@
     transform: scale(1.05);
   }
 }
+
+.bag-container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+/* .bag{
+  width: 30px;
+  height: 50px;
+  background: linear-gradient(to bottom, #ff6a00, #ee0979);
+  position: absolute;
+  top: 0;
+  left: 0;
+  user-select: none;
+  cursor: pointer;
+  animation: downBags 3s forwards linear;
+}
+
+// 红包的下落动画
+@keyframes downBags {
+  0% {
+    top: 50%;
+  }
+  100% {
+    top: 100%;
+  }
+} */
+.bag{
+  width: 30px;
+  height: 50px;
+  background: linear-gradient(to bottom, #ff6a00, #ee0979);
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  user-select: none;
+  cursor: pointer; */
+  /* animation: downBags 3s forwards linear; */
+}
+

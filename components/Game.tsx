@@ -119,10 +119,10 @@ export default function Game({ currentView, setCurrentView }: GameProps) {
                 <p>{gameLevelIndex + 1} <span className="text-[#95908a]">/ {LEVELS.length}</span></p>
               </div>
 
-              {/* <div className='w-full h-80'>
-              
+              <div className='w-full h-80'>
+
                 <RedRain />
-              </div> */}
+              </div>
 
               <div className="px-4 mt-4 flex justify-center">
                 <div
