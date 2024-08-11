@@ -120,6 +120,7 @@ export default function Game({ currentView, setCurrentView }: GameProps) {
               </div>
 
               {/* <div className='w-full h-80'>
+              
                 <RedRain />
               </div> */}
 
