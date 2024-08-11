@@ -3,19 +3,21 @@ import { useEffect, useState } from "react";
 import { useSpring, animated } from "react-spring";
 import AnimateSpring from "./AnimateSpring";
 
-interface RedRainProps {}
+interface RedRainProps {
+    update: (e: any) => void;
+}
 
-export default function RedRain({}: RedRainProps) {
+export default function RedRain({ update }: RedRainProps) {
     const bagsNum = 20;
     const [gameover, setGameover] = useState(false);
     const [bags, setBags] = useState<any[]>([]);
 
     const props: any = useSpring({
-        from: { position: "absolute", top: '0%' },
-        to: { position: "absolute", top: '100%' },
+        from: { position: "absolute", top: "0%" },
+        to: { position: "absolute", top: "100%" },
         config: {
-            duration: 5000
-        }
+            duration: 500,
+        },
     });
 
     const init = () => {
@@ -28,16 +30,28 @@ export default function RedRain({}: RedRainProps) {
             }
             createBag(count);
             count++;
-        }, 500);
+        }, 1000);
     };
 
     const createBag = (i: number) => {
-        bags.push({
-            key: i,
-            left: `${Math.floor(Math.random() * 90)}vw`,
-            show: true,
+        setBags((prev) => [
+            ...prev,
+            {
+                key: i,
+                left: `${Math.floor(Math.random() * 90)}%`,
+                show: true,
+            },
+        ]);
+    };
+
+    const handleBagClick = (key: any, e: any) => {
+        console.log("key:", key);
+
+        setBags((bags) => {
+            bags[key].show = false;
+            return bags;
         });
-        setBags(bags);
+        update(e);
     };
 
     useEffect(() => {
@@ -46,17 +60,21 @@ export default function RedRain({}: RedRainProps) {
 
     return (
         <div className="w-full h-80 relative overflow-hidden">
-            {/* <div className="bag"></div> */}
-            <animated.div style={props}>
-                <div className="bag"></div>
-            </animated.div>
-
-            {bags.map((bag: any) => (
-                <AnimateSpring key={bag.key} left={bag.left} show={bag.show}>
-                    <div className="bag"></div>
+            {bags.map((bag: any, index) => (
+                <AnimateSpring
+                    key={bag.key + "_" + bag.left}
+                    left={bag.left}
+                    show={bag.show}
+                >
+                    {bag.show ? (
+                        <div
+                            className="bag"
+                            onClick={(e) => {
+                                handleBagClick(bag.key, e);
+                            }}
+                        ></div>
+                    ) : null}
                 </AnimateSpring>
-
-                // <div className="bag" key={bag.key} style={{ left: bag.left, display: bag.show ? 'block' : 'none' }}></div>
             ))}
         </div>
     );

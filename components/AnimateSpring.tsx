@@ -13,13 +13,15 @@ export default function AnimateSpring({ children, left, show }: AnimateSpringPro
         from: { position: "absolute", top: "0%" },
         to: { position: "absolute", top: "100%" },
         config: {
-            duration: 5000,
+            duration: 3000,
         },
     });
 
     return (
-        <animated.div style={{ ...props, left, display: show ? 'block' : 'none' }}>
-            <div className="bag"></div>
+        <animated.div
+            style={{ ...props, left, display: show ? "block" : "none" }}
+        >
+            {children}
         </animated.div>
     );
 }
