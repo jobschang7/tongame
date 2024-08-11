@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { useGameStore } from '@/utils/game-mechanics';
 import Snowflake from '@/icons/Snowflake';
 import TopInfoSection from '@/components/TopInfoSection';
+import RedRain from "@/components/RedRain";
 import { LEVELS } from '@/utils/consts';
 
 interface GameProps {
@@ -117,6 +118,10 @@ export default function Game({ currentView, setCurrentView }: GameProps) {
                 <p className="text-[#95908a]" >&#8226;</p>
                 <p>{gameLevelIndex + 1} <span className="text-[#95908a]">/ {LEVELS.length}</span></p>
               </div>
+
+              {/* <div className='w-full h-80'>
+                <RedRain />
+              </div> */}
 
               <div className="px-4 mt-4 flex justify-center">
                 <div
