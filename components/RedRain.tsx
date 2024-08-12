@@ -1,7 +1,9 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSpring, animated } from "react-spring";
 import AnimateSpring from "./AnimateSpring";
+import { bag } from "@/images";
 
 interface RedRainProps {
     update: (e: any) => void;
@@ -72,7 +74,13 @@ export default function RedRain({ update }: RedRainProps) {
                             onClick={(e) => {
                                 handleBagClick(bag.key, e);
                             }}
-                        ></div>
+                        >
+                            <Image
+                                src={'/bag-icon.png'}
+                                alt="bag"
+                                fill
+                            />
+                        </div>
                     ) : null}
                 </AnimateSpring>
             ))}

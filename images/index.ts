@@ -16,6 +16,7 @@ import youtube from "./youtube.png";
 import telegram from "./telegram.png";
 import twitter from "./twittter.png";
 import friends from "./friends.png";
+import bag from "./bag-icon.png";
 import tonWallet from "./ton-wallet.png";
 import crystal1 from "./crystals/crystal1.png"
 import crystal2 from "./crystals/crystal2.png"
@@ -48,6 +49,7 @@ export {
     twitter,
     friends,
     tonWallet,
+    bag,
     crystal1,
     crystal2,
     crystal3,
@@ -79,6 +81,7 @@ export const imageMap: Record<string, any> = {
     twitter,
     friends,
     tonWallet,
+    bag,
     crystal1,
     crystal2,
     crystal3,
