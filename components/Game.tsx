@@ -136,7 +136,7 @@ export default function Game({ currentView, setCurrentView }: GameProps) {
                           <RedRain update={handleCardClick} />
                       </div>
 
-                      <div className="px-4 mt-4 flex justify-center">
+                      <div className="px-4 mt-4 flex justify-center hidden">
                           <div
                               className="w-80 h-80 p-4 rounded-full circle-outer"
                               onClick={handleCardClick}

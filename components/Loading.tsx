@@ -31,6 +31,9 @@ export default function Loading({ setIsInitialized, setCurrentView }: LoadingPro
         telegramName = WebApp.initDataUnsafe.user?.first_name || 'Unknown User';
 
         startParam = WebApp.initDataUnsafe.start_param;
+
+        
+
       }
 
 
