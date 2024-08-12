@@ -10,17 +10,9 @@ interface RedRainProps {
 }
 
 export default function RedRain({ update }: RedRainProps) {
-    const bagsNum = 20;
+    const bagsNum = 60;
     const [gameover, setGameover] = useState(false);
     const [bags, setBags] = useState<any[]>([]);
-
-    const props: any = useSpring({
-        from: { position: "absolute", top: "0%" },
-        to: { position: "absolute", top: "100%" },
-        config: {
-            duration: 500,
-        },
-    });
 
     const init = () => {
         let count = 0;
@@ -37,7 +29,7 @@ export default function RedRain({ update }: RedRainProps) {
 
     const createBag = (i: number) => {
         setBags((prev) => [
-            ...prev,
+            ...(prev.length > 3 ? prev.slice(1) : prev),
             {
                 key: i,
                 left: `${Math.floor(Math.random() * 90)}%`,
@@ -72,7 +64,7 @@ export default function RedRain({ update }: RedRainProps) {
                         <div
                             className="bag"
                             onClick={(e) => {
-                                handleBagClick(bag.key, e);
+                                handleBagClick(index, e);
                             }}
                         >
                             <Image
