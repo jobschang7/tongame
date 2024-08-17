@@ -154,4 +154,23 @@
   cursor: pointer; */
   /* animation: downBags 3s forwards linear; */
 }
+.circle-element {
+  animation: runing 8s infinite linear;
+}
+.rotating-element {
+  position: absolute;
+  left: 60px;
+  top: -30px;
+  width: 88px;
+  height: 88px;
+}
+ 
+@keyframes runing {
+  form {
+      transform: rotate(0deg);
+  }
 
+  to {
+      transform: rotate(360deg);
+  }
+}

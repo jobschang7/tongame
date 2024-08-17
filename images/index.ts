@@ -28,8 +28,23 @@ import crystal7 from "./crystals/crystal7.png"
 import crystal8 from "./crystals/crystal8.png"
 import crystal9 from "./crystals/crystal9.png"
 
+import StartArrowIcon from './game/start-arrow-icon.svg';
+import StartCircleIcon from './game/start-circle-icon.svg';
+import StartHeadIcon from './game/start-head-icon.svg';
+import StartLogoIcon from './game/start-logo-icon.svg';
+import StartMouseIcon from './game/start-mouse-icon.svg';
+import StartStarsBg from './game/start-stars-bg.svg';
+import StartTextIcon from './game//start-text-icon.svg';
+
 
 export {
+    StartArrowIcon,
+    StartCircleIcon,
+    StartHeadIcon,
+    StartLogoIcon,
+    StartMouseIcon,
+    StartStarsBg,
+    StartTextIcon,
     hamsterExchange,
     binanceLogo,
     dollarCoin,
@@ -62,6 +77,13 @@ export {
 };
 
 export const imageMap: Record<string, any> = {
+    StartArrowIcon,
+    StartCircleIcon,
+    StartHeadIcon,
+    StartLogoIcon,
+    StartMouseIcon,
+    StartStarsBg,
+    StartTextIcon,
     hamsterExchange,
     binanceLogo,
     dollarCoin,
