@@ -17,49 +17,56 @@ interface EmotionProps {
 }
 
 export default function EmotionPage({ update }: EmotionProps) {
-    const bagsNum = 60;
+    const sizes = [50, 35, 30];
     const [count, setCount] = useState(30);
     const timer = useRef<any>(null);
     const timer2 = useRef<any>(null);
-    const [gameover, setGameover] = useState(false);
+    const [fomoCount, setFomoCount] = useState(0);
+    const [fudCount, setFudCount] = useState(0);
     const [bags, setBags] = useState<any[]>([]);
 
-    const onCountdown = () => {
-        setCount((prevTimeLeft) => prevTimeLeft - 1);
-    };
-
     useEffect(() => {
-        timer.current = setInterval(onCountdown, 1000);
+        timer.current = setInterval(() => {
+            setCount((prevTimeLeft) => {
+                if (prevTimeLeft <= 1) {
+                    clearInterval(timer.current);
+                    clearInterval(timer2.current);
+                    return 0
+                }
+                return prevTimeLeft - 1
+            });
+        }, 1000);
         return () => clearInterval(timer.current);
     }, []);
 
     const init = () => {
         let count = 0;
         timer2.current = setInterval(() => {
-            if (count >= bagsNum) {
-                clearInterval(timer2.current);
-                setGameover(true);
-                return;
-            }
             createBag(count);
             count++;
-        }, 1000);
+        }, 500);
     };
 
     const createBag = (i: number) => {
         setBags((prev) => [
-            ...(prev.length > 3 ? prev.slice(1) : prev),
+            ...(prev.length > 8 ? prev.slice(1) : prev),
             {
                 key: i,
                 left: `${Math.floor(Math.random() * 90)}%`,
                 show: true,
+                type: Math.random() >= 0.5 ? "fomo" : "fud",
+                size: sizes[i % 3],
             },
         ]);
     };
 
     const handleBagClick = (key: any, e: any) => {
         console.log("key:", key);
-
+        if (bags[key].type === 'fomo') {
+            setFomoCount((prev) => prev + 1);
+        } else {
+            setFudCount((prev) => prev + 1);
+        }
         setBags((bags) => {
             bags[key].show = false;
             return bags;
@@ -69,6 +76,7 @@ export default function EmotionPage({ update }: EmotionProps) {
 
     useEffect(() => {
         init();
+        return () => clearInterval(timer2.current);
     }, []);
 
     return (
@@ -89,17 +97,17 @@ export default function EmotionPage({ update }: EmotionProps) {
                 <div className="w-[130px] h-[20px] absolute left-[50px]">
                     <Image src={EmotionFomoIcon} alt="fomo" fill />
                     <span className="absolute right-2 top-0 text-[20px] leading-[20px] text-[#000]">
-                        10
+                        {fomoCount}
                     </span>
                 </div>
                 <div className="w-[130px] h-[20px] absolute right-[50px] bottom-0">
                     <Image src={EmotionFudIcon} alt="fud" fill />
                     <span className="absolute right-2 top-0 text-[20px] leading-[20px] text-[#000]">
-                        0
+                        {fudCount}
                     </span>
                 </div>
             </div>
-            <div className="w-full flex-1 relative">
+            <div className="w-full flex-1 relative overflow-hidden">
                 {bags.map((bag: any, index) => (
                     <AnimateSpring
                         key={bag.key + "_" + bag.left}
@@ -113,7 +121,14 @@ export default function EmotionPage({ update }: EmotionProps) {
                                     handleBagClick(index, e);
                                 }}
                             >
-                                <Image src={"/bag-icon.png"} alt="bag" fill />
+                                <Image
+                                    src={
+                                        bag.type === "fomo" ? FomoIcon : FudIcon
+                                    }
+                                    alt="bag"
+                                    width={bag.size}
+                                    height={bag.size}
+                                />
                             </div>
                         ) : null}
                     </AnimateSpring>

@@ -13,7 +13,7 @@ export default function EmotionAnimateSpring({ children, left, show }: AnimateSp
         from: { position: "absolute", top: "0%" },
         to: { position: "absolute", top: "100%" },
         config: {
-            duration: 3000,
+            duration: 5000,
         },
     });
 
