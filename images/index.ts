@@ -34,7 +34,19 @@ import StartHeadIcon from './game/start-head-icon.svg';
 import StartLogoIcon from './game/start-logo-icon.svg';
 import StartMouseIcon from './game/start-mouse-icon.svg';
 import StartStarsBg from './game/start-stars-bg.svg';
-import StartTextIcon from './game//start-text-icon.svg';
+import StartTextIcon from './game/start-text-icon.svg';
+
+import BtcIcon from './game/btc-icon.png';
+import EthIcon from './game/eth-icon.png';
+import BnbIcon from './game/bnb-icon.png';
+import SelectDownIcon from './game/select-down-icon.svg';
+import SelectSloganIcon from './game/select-slogan-icon.svg';
+
+import FomoIcon from './game/fomo-icon.svg';
+import FudIcon from './game/fud-icon.svg';
+import EmotionDownIcon from './game/emotion-down-icon.svg';
+import EmotionFomoIcon from './game/emotion-fomo-icon.svg';
+import EmotionFudIcon from './game/emotion-fud-icon.svg';
 
 
 export {
@@ -45,6 +57,17 @@ export {
     StartMouseIcon,
     StartStarsBg,
     StartTextIcon,
+    BtcIcon,
+    EthIcon,
+    BnbIcon,
+    SelectDownIcon,
+    SelectSloganIcon,
+    FomoIcon,
+    FudIcon,
+    EmotionDownIcon,
+    EmotionFomoIcon,
+    EmotionFudIcon,
+
     hamsterExchange,
     binanceLogo,
     dollarCoin,
@@ -84,6 +107,16 @@ export const imageMap: Record<string, any> = {
     StartMouseIcon,
     StartStarsBg,
     StartTextIcon,
+    BtcIcon,
+    EthIcon,
+    BnbIcon,
+    SelectDownIcon,
+    SelectSloganIcon,
+    FomoIcon,
+    FudIcon,
+    EmotionDownIcon,
+    EmotionFomoIcon,
+    EmotionFudIcon,
     hamsterExchange,
     binanceLogo,
     dollarCoin,

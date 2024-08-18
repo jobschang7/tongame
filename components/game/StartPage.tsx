@@ -15,12 +15,22 @@ import { useRef } from "react";
 
 export default function StartPage() {
     const ref = useRef();
-    const props: any = useSpring({
+    const mouseProps: any = useSpring({
         from: { bottom: "0%", right: "0%" },
-        to: { bottom: "50%", right: "50%" },
-        onRest: () => {
-           
-        },
+        to: [
+            { bottom: "10%", right: "10%" },
+            { bottom: "0%", right: "0%" },
+        ],
+        loop: true,
+        config: { duration: 1000 },
+        onRest: () => {},
+    });
+    const textProps: any = useSpring({
+        from: { scale: 1 },
+        to: [{ scale: 1.1 }, { scale: 1 }],
+        loop: true,
+        config: { duration: 1000 },
+        onRest: () => {},
     });
 
 
@@ -45,20 +55,23 @@ export default function StartPage() {
             </div>
             <div className="w-[200px] h-[200px] relative">
                 <Image src={StartCircleIcon} alt="circle" fill />
-                <Image
-                    src={StartTextIcon}
-                    alt="text"
-                    width={140}
-                    className="absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto"
-                />
                 <animated.div
-                    style={{ width: '42px', height: '42px', position: 'absolute', ...props }}
+                    className="absolute w-[140px] left-0 right-0 top-0 bottom-0 mx-auto my-auto"
+                    style={{
+                        ...textProps,
+                    }}
                 >
-                    <Image
-                        src={StartMouseIcon}
-                        alt="text"
-                        fill
-                    />
+                    <Image src={StartTextIcon} alt="text" fill />
+                </animated.div>
+                <animated.div
+                    style={{
+                        width: "42px",
+                        height: "42px",
+                        position: "absolute",
+                        ...mouseProps,
+                    }}
+                >
+                    <Image src={StartMouseIcon} alt="text" fill />
                 </animated.div>
 
                 <div className="w-full h-full relative circle-element">
