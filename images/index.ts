@@ -48,6 +48,10 @@ import EmotionDownIcon from './game/emotion-down-icon.svg';
 import EmotionFomoIcon from './game/emotion-fomo-icon.svg';
 import EmotionFudIcon from './game/emotion-fud-icon.svg';
 
+import ResultCoreIcon from './game/result-core-icon.svg';
+import ResultSloganIcon from './game/result-slogan-icon.png';
+import ResultStarIcon from './game/result-star-icon.svg';
+
 
 export {
     StartArrowIcon,
@@ -67,6 +71,9 @@ export {
     EmotionDownIcon,
     EmotionFomoIcon,
     EmotionFudIcon,
+    ResultCoreIcon,
+    ResultSloganIcon,
+    ResultStarIcon,
 
     hamsterExchange,
     binanceLogo,
@@ -117,6 +124,10 @@ export const imageMap: Record<string, any> = {
     EmotionDownIcon,
     EmotionFomoIcon,
     EmotionFudIcon,
+    ResultCoreIcon,
+    ResultSloganIcon,
+    ResultStarIcon,
+    
     hamsterExchange,
     binanceLogo,
     dollarCoin,

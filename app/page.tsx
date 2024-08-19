@@ -7,13 +7,15 @@ import Link from 'next/link';
 import StartPage from "@/components/game/StartPage";
 import SelectPage from "@/components/game/SelectPage";
 import EmotionPage from "@/components/game/EmotionPage";
+import ResultPage from "@/components/game/ResultPage";
 
 export default function Home() {
   return (
       <div className="w-full h-screen min-h-[600px]">
           {/* <StartPage /> */}
           {/* <SelectPage /> */}
-          <EmotionPage />
+          {/* <EmotionPage update={() => {}} /> */}
+            <ResultPage />
       </div>
   );
 }

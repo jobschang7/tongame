@@ -186,3 +186,14 @@
   text-stroke: 2px black;
   -webkit-text-stroke: 2px black; 
 }
+.result-core {
+    font-size: 60px;
+    font-weight: 400;
+    background-image: linear-gradient(180deg, #B063FF, #CFB1F7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 60px;
+    text-stroke: 2px black;
+    -webkit-text-stroke: 2px black; 
+}
