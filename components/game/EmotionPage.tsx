@@ -11,6 +11,7 @@ import {
 import { useSpring, animated } from "react-spring";
 import { useEffect, useRef, useState } from "react";
 import AnimateSpring from "../EmotionAnimateSpring";
+import { useGameStore } from "@/utils/game-mechanics";
 
 interface EmotionProps {
     update: (e: any) => void;
@@ -18,6 +19,8 @@ interface EmotionProps {
 }
 
 export default function EmotionPage({ update, updateStep }: EmotionProps) {
+    const { pointsBalance, points, setPoints, setPointsBalance } =
+        useGameStore();
     const sizes = [50, 35, 30];
     const [count, setCount] = useState(30);
     const timer = useRef<any>(null);
@@ -32,6 +35,8 @@ export default function EmotionPage({ update, updateStep }: EmotionProps) {
                 if (prevTimeLeft <= 1) {
                     clearInterval(timer.current);
                     clearInterval(timer2.current);
+                    setPointsBalance(pointsBalance + 100);
+                    setPoints(points + 100);
                     updateStep();
                     return 0;
                 }

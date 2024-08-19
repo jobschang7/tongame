@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { ResultCoreIcon, ResultSloganIcon, ResultStarIcon } from "@/images";
 import { useSpring, animated } from "react-spring";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
 
 export default function ResultPage() {
     const [stars, setStars] = useState([
@@ -24,6 +25,9 @@ export default function ResultPage() {
             color: "#FFFFFF",
         },
     ]);
+    useEffect(() => {
+
+    }, []);
     return (
         <div className="w-full h-full bg-gradient-to-b relative from-[#EFEEF2] to-[#9647FF]">
             <Image

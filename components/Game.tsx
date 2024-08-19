@@ -116,7 +116,7 @@ export default function Game({ currentView, setCurrentView }: GameProps) {
                                   className="text-4xl text-white"
                                   suppressHydrationWarning
                               >
-                                  {pointsBalance.toLocaleString()}
+                                  {pointsBalance.toLocaleString()}={points}
                               </p>
                           </div>
                       </div>

@@ -8,10 +8,20 @@ import StartPage from "@/components/game/StartPage";
 import SelectPage from "@/components/game/SelectPage";
 import EmotionPage from "@/components/game/EmotionPage";
 import ResultPage from "@/components/game/ResultPage";
+import LoadingScreen from "@/components/Loading";
 import { useState } from 'react';
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
+  const [isInitialized, setIsInitialized] = useState(false);
+  if (!isInitialized) {
+      return (
+          <LoadingScreen
+              setIsInitialized={setIsInitialized}
+              setCurrentView={() => {}}
+          />
+      );
+  }
   return (
       <div className="w-full h-screen min-h-[600px]">
           {currentStep === 1 ? (
