@@ -14,9 +14,10 @@ import AnimateSpring from "../EmotionAnimateSpring";
 
 interface EmotionProps {
     update: (e: any) => void;
+    updateStep: () => void;
 }
 
-export default function EmotionPage({ update }: EmotionProps) {
+export default function EmotionPage({ update, updateStep }: EmotionProps) {
     const sizes = [50, 35, 30];
     const [count, setCount] = useState(30);
     const timer = useRef<any>(null);
@@ -31,9 +32,10 @@ export default function EmotionPage({ update }: EmotionProps) {
                 if (prevTimeLeft <= 1) {
                     clearInterval(timer.current);
                     clearInterval(timer2.current);
-                    return 0
+                    updateStep();
+                    return 0;
                 }
-                return prevTimeLeft - 1
+                return prevTimeLeft - 1;
             });
         }, 1000);
         return () => clearInterval(timer.current);
@@ -62,7 +64,7 @@ export default function EmotionPage({ update }: EmotionProps) {
 
     const handleBagClick = (key: any, e: any) => {
         console.log("key:", key);
-        if (bags[key].type === 'fomo') {
+        if (bags[key].type === "fomo") {
             setFomoCount((prev) => prev + 1);
         } else {
             setFudCount((prev) => prev + 1);

@@ -11,7 +11,10 @@ import {
 import { useSpring, animated } from "react-spring";
 import { useRef, useState } from "react";
 
-export default function SelectPage() {
+interface SelectProps {
+    updateStep: () => void;
+}
+export default function SelectPage({ updateStep }: SelectProps) {
     const [isShow, setIsShow] = useState(false);
     const [activeCoin, setActiveCoin] = useState({
         label: "BTC",
@@ -30,33 +33,27 @@ export default function SelectPage() {
             label: "BNB",
             icon: BnbIcon,
         },
-        {
-            label: "BTC2",
-            icon: BtcIcon,
-        },
-        {
-            label: "BTC3",
-            icon: BtcIcon,
-        },
-        {
-            label: "BTC4",
-            icon: BtcIcon,
-        },
-        {
-            label: "BTC5",
-            icon: BtcIcon,
-        },
-        {
-            label: "BTC6",
-            icon: BtcIcon,
-        },
+        // {
+        //     label: "BTC2",
+        //     icon: BtcIcon,
+        // },
+        // {
+        //     label: "BTC3",
+        //     icon: BtcIcon,
+        // },
+        // {
+        //     label: "BTC4",
+        //     icon: BtcIcon,
+        // },
+        // {
+        //     label: "BTC5",
+        //     icon: BtcIcon,
+        // },
+        // {
+        //     label: "BTC6",
+        //     icon: BtcIcon,
+        // },
     ]);
-
-    const listProps: any = useSpring({
-        from: { height: "0px" },
-        to: { height: "240px" },
-        config: { duration: 1000 },
-    });
     const downProps: any = useSpring({
         transform: isShow ? "rotate(-180deg)" : "rotate(0deg)",
         config: { duration: 300 },
@@ -69,12 +66,13 @@ export default function SelectPage() {
 
     return (
         <div className="w-full h-full bg-gradient-to-b relative from-[#EFEEF2] to-[#9647FF] flex justify-center items-center">
-            <Image 
-                src={SelectSloganIcon} 
-                width={298} 
-                height={156} 
-                alt="slogan" 
+            <Image
+                src={SelectSloganIcon}
+                width={298}
+                height={156}
+                alt="slogan"
                 className="absolute right-0 top-1/2 -mt-[250px]"
+                onClick={updateStep}
             />
             <div className="w-[300px] h-[65px] -mt-[150px] relative">
                 <button
@@ -107,12 +105,7 @@ export default function SelectPage() {
                     </animated.span>
                 </button>
                 {isShow ? (
-                    <animated.div
-                        className="absolute top-[65px] left-0 w-full border border-[#231F20] rounded-[32px] bg-[#F3F3F333] overflow-y-auto"
-                        style={{
-                            ...listProps,
-                        }}
-                    >
+                    <div className="absolute top-[65px] left-0 w-full max-h-[240px] border border-[#231F20] rounded-[32px] bg-[#F3F3F333] overflow-y-auto">
                         {coinList.map((coin) => (
                             <div
                                 key={coin.label}
@@ -130,7 +123,7 @@ export default function SelectPage() {
                                 </span>
                             </div>
                         ))}
-                    </animated.div>
+                    </div>
                 ) : null}
             </div>
         </div>

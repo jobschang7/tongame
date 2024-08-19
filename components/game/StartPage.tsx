@@ -12,8 +12,10 @@ import {
 } from "@/images";
 import { useSpring, animated } from "react-spring";
 import { useRef } from "react";
-
-export default function StartPage() {
+interface StartProps {
+    updateStep: () => void;
+}
+export default function StartPage({ updateStep }: StartProps) {
     const ref = useRef();
     const mouseProps: any = useSpring({
         from: { bottom: "0%", right: "0%" },
@@ -32,7 +34,6 @@ export default function StartPage() {
         config: { duration: 1000 },
         onRest: () => {},
     });
-
 
     return (
         <div className="w-full h-full bg-gradient-to-b relative from-[#B9A8E6] to-[#BD73E8] flex justify-center items-center">
@@ -53,7 +54,7 @@ export default function StartPage() {
             <div className="w-full absolute bottom-0 left-0 box-border p-4">
                 <Image src={StartStarsBg} alt="arrow" className="w-full" />
             </div>
-            <div className="w-[200px] h-[200px] relative">
+            <div className="w-[200px] h-[200px] relative" onClick={updateStep}>
                 <Image src={StartCircleIcon} alt="circle" fill />
                 <animated.div
                     className="absolute w-[140px] left-0 right-0 top-0 bottom-0 mx-auto my-auto"

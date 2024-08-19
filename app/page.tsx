@@ -8,14 +8,25 @@ import StartPage from "@/components/game/StartPage";
 import SelectPage from "@/components/game/SelectPage";
 import EmotionPage from "@/components/game/EmotionPage";
 import ResultPage from "@/components/game/ResultPage";
+import { useState } from 'react';
 
 export default function Home() {
+  const [currentStep, setCurrentStep] = useState(1);
   return (
       <div className="w-full h-screen min-h-[600px]">
-          {/* <StartPage /> */}
-          {/* <SelectPage /> */}
-          {/* <EmotionPage update={() => {}} /> */}
-            <ResultPage />
+          {currentStep === 1 ? (
+              <StartPage updateStep={() => setCurrentStep(currentStep + 1)} />
+          ) : null}
+          {currentStep === 2 ? (
+              <SelectPage updateStep={() => setCurrentStep(currentStep + 1)} />
+          ) : null}
+          {currentStep === 3 ? (
+              <EmotionPage
+                  update={() => {}}
+                  updateStep={() => setCurrentStep(currentStep + 1)}
+              />
+          ) : null}
+          {currentStep === 4 ? <ResultPage /> : null}
       </div>
   );
 }
