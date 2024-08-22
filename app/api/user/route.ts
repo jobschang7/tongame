@@ -36,14 +36,16 @@ export async function POST(req: Request) {
   if (!telegramId) {
     return NextResponse.json({ error: 'Invalid user data' }, { status: 400 });
   }
-
+  console.log('telegramId:', telegramId);
   try {
+
+    
     const dbUserUpdated = await prisma.$transaction(async (prisma) => {
       let dbUser = await prisma.user.findUnique({
         where: { telegramId },
         include: { referredBy: true },
       });
-
+      console.log('dbUser:', dbUser);
       const currentTime = new Date();
 
       if (dbUser) {
